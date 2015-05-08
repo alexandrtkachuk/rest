@@ -1,0 +1,13 @@
+#client/api/.htaccess
+#RewriteEngine On
+#Options +FollowSymlinks
+#RewriteBase /api/
+#RewriteRule (.*) http://192.168.56.88/rest/server/api/ [P]
+#DirectoryIndex index.php
+
+RewriteEngine On
+RewriteBase /rest/client/api/
+#RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule  (.*) http://192.168.56.88/rest/server/api/shop/$1 [P]
+
+#RewriteRule !\.(js|jpeg|css|html|jpg|woff|woff2|ttf|eot|svg)$ index.cgi [L]
