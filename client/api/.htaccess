@@ -6,8 +6,8 @@
 #DirectoryIndex index.php
 
 RewriteEngine On
-RewriteBase /rest/client/api/
+RewriteBase /api/
 #RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule  (.*) http://192.168.56.88/rest/server/api/shop/$1 [P]
+RewriteRule  (.*)  http://192.168.0.15/~user7/rest/server/api/$1 [P]
 
 #RewriteRule !\.(js|jpeg|css|html|jpg|woff|woff2|ttf|eot|svg)$ index.cgi [L]

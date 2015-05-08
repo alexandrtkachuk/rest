@@ -3,6 +3,12 @@ RewriteEngine On
 #RewriteBase  /rest/server/
 #RewriteCond %{REQUEST_FILENAME} !-f
 #RewriteCond %{REQUEST_FILENAME} !-d
-DirectoryIndex index.html
-#RewriteRule ^(.*)$ index.php [L]
 
+#RewriteRule ^(.*)$ index.php [L]
+Options +FollowSymlinks
+RewriteBase  /~user7/rest/server/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+DirectoryIndex index.php
+#RewriteRule ^ index.php 
+RewriteRule ^(.*)$ index.php [L]
