@@ -1,9 +1,0 @@
-RewriteEngine On
-#Options +FollowSymlinks
-#RewriteBase  /~user7/rest/server/api/shop/
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteCond %{REQUEST_FILENAME} !-d
-#DirectoryIndex index.php
-#RewriteRule ^ index.php 
-#RewriteRule ^(.*)$ index.php [L]
-

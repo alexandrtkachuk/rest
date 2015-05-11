@@ -99,13 +99,7 @@ class Sql
     }
     
     public function Result()
-    {   
-        /*
-         * formiruem zapros vipilnjaem i return result fo user*/
-        //$this->query.=' FROM '.$this->tables;
-        $q="INSERT INTO anketa (firstName, lastName, age, description) 
-            VALUES ('VAsa' , 'Pupkin', 45, 'xzxzxz' );";
-        
+    {                
         if(isset($this->tables)===false)
         {
             return false;
@@ -130,10 +124,10 @@ class Sql
             $this->query.=' '.$this->limit; 
         }
         
-        //echo $this->query;
+        #echo $this->query;
         $t=self::query($this->query );
        
-        //var_dump($t);
+        #var_dump($t);
         
         $r=true;
         if($this->retResult===true)
@@ -359,8 +353,4 @@ class Sql
         return $mass;
 
     }
-
-    
 }
-
-
