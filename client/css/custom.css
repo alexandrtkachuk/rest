@@ -31,3 +31,8 @@ input.ng-invalid
 .width20{
 	width:25%; 
 }
+
+.item
+{
+	margin-bottom:45px;
+}

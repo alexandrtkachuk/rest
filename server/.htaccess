@@ -1,6 +1,6 @@
 RewriteEngine On
 Options +FollowSymlinks
-RewriteBase  /rest/server/
+RewriteBase  /~user7/rest/server/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 DirectoryIndex index.php

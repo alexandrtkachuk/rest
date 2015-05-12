@@ -10,7 +10,6 @@ function start()
     $extension;
     $err = Errors::getMee();
     try{       
-
         $rmethod = mb_strtolower($_SERVER['REQUEST_METHOD']);      
 
         @ list($class,$method, $params, $extension ) = (new Route())->get(); 

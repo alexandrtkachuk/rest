@@ -52,6 +52,23 @@ CREATE TABLE carshop_manufacturer (id INT NOT NULL AUTO_INCREMENT , name VARCHAR
 INSERT INTO carshop_users (name , pass , email , role ) VALUES ( 'admin', MD5('admin'), 'admin@mail.ru',0);
 INSERT INTO carshop_manufacturer (name  ) VALUES ( 'BMW');
 INSERT INTO carshop_manufacturer (name  ) VALUES ( 'Mersedes');
-INSERT INTO carshop_cars (price ,title , color , maxSpeed, year, engineSize, image, idManufacturer ) VALUES ( 2000, 'bmw X5', 'red', 200,2005,2.5, 'test.jpg',1);
-INSERT INTO carshop_cars (price ,title , color , maxSpeed, year, engineSize, image, idManufacturer ) VALUES ( 2500, 'bmw X6', 'black', 205,2010,3.0, 'test.jpg',1);
-INSERT INTO carshop_cars (price ,title , color , maxSpeed, year, engineSize, image, idManufacturer ) VALUES ( 3000, '600', 'black', 220,2010,2.5, 'test.jpg',2);
+INSERT INTO carshop_manufacturer (name  ) VALUES ( 'Opel');
+INSERT INTO carshop_cars (price ,title , color , maxSpeed, year, engineSize, image, idManufacturer ) 
+VALUES ( 2000, 'bmw X5', 'red', 200,2005,2.5, 'test.jpg',1);
+
+INSERT INTO carshop_cars (price ,title , color , maxSpeed, year, engineSize, image, idManufacturer ) 
+VALUES ( 2500, 'bmw X6', 'black', 205,2010,3.0, 'test.jpg',1);
+
+INSERT INTO carshop_cars (price ,title , color , maxSpeed, year, engineSize, image, idManufacturer ) 
+VALUES ( 3000, '600', 'black', 220,2010,2.5, 'test.jpg',2);
+
+INSERT INTO carshop_cars (price ,title , color , maxSpeed, year, engineSize, image, idManufacturer ) 
+VALUES ( 1500, 'Omega', 'black', 220,2010,2.0, 'test.jpg',3);
+
+INSERT INTO carshop_cars (price ,title , color , maxSpeed, year, engineSize, image, idManufacturer ) 
+VALUES ( 1200, 'Astra', 'black', 200,2009,1.8, 'test.jpg',3);
+
+INSERT INTO carshop_cars (price ,title , color , maxSpeed, year, engineSize, image, idManufacturer ) 
+VALUES ( 1700, '3m', 'black', 220,2011,2.0, 'test.jpg',1);
+
+

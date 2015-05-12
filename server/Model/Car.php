@@ -24,8 +24,7 @@ class Car
     {
         $sql=Sql::getMee(); 
         $sql->Select(
-            'id',
-            
+            'id',            
             'title',     
             'image',
             '(SELECT name FROM carshop_manufacturer m WHERE m.id =idManufacturer) as manufacturer'        
