@@ -7,4 +7,8 @@ App.controller('cUser',function(sResource, md5){
     console.log(md5.createHash('test'));
     
     console.log(this.test);
+	
+	//window.localStorage
+	
+	
 });

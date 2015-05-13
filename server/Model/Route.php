@@ -18,8 +18,10 @@ class Route
         }
 
         @ list( $api,$this->class,$this->method,$param) = explode('/',$url,4);
-        @ list($this->params,$this->extension) =  explode('.', $param , 2);
+        #@ list($this->params,$this->extension) =  explode('.', $param , 2);
 
+        @ list($this->params,$this->extension)= 
+            preg_split('/\.([^\d+]\w+)/',$param,2,PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE );
         if(!isset($this->extension) || strlen($this->extension)<1)
         {
             $this->extension =  EXTENSION;
