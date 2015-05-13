@@ -13,6 +13,7 @@ class View
             );                
         }
 
+        
         header('Content-Type: text/'.$extension); 
 
         if($extension == 'json' )

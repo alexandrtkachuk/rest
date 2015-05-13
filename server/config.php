@@ -23,3 +23,4 @@ define('DB_HOST', '');
 define('ERROR_1', 'No class ');
 define('ERROR_2', 'No method ');
 define('ERROR_3', 'Undefiner extension');
+define('ERROR_4', 'access error');

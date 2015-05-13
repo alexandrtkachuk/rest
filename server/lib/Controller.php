@@ -19,7 +19,7 @@ class Controller
             $name = 'c'.$name;
             return new $name;
         }
-
+        Errors::getMee()->set(ERROR_1);
         return false;
     }
 

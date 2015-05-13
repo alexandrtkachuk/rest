@@ -24,21 +24,19 @@ function start()
 
         $class = Controller::$class();
         if(!$class)
-        {
-            $err->set(ERROR_1); 
+        { 
             return array( null, $extension);
         }
         $call = $rmethod.$method;
         $content = $class->$call($params);
         if(!isset($content))
-        {
-            $err->set(ERROR_2);
+        { 
             return array( null,$extension);
         }
     }
     catch(Exception $e )
     {
-        $err->set( $e->getMessage()  );
+        $err->set( $e->getMessage()  ); 
         return array(null,$extension); 
     }
     
@@ -48,7 +46,6 @@ function start()
 function view($content,$extension)
 {
     $view = new View($content,$extension);
-
 }
 
 @ list($content, $extension )= start();

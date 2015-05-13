@@ -14,7 +14,12 @@ App.config(function($stateProvider, $urlRouterProvider) {
 		  templateUrl: "partials/product.html"
 		})
 	
-	
+	.state('user', {
+		  url: "/user",
+		  controller: "cUser as cU",
+		  template: "{{cU.test}}"
+		  
+		})
 		  
 
   });
