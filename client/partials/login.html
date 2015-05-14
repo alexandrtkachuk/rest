@@ -7,12 +7,30 @@
         <h4 class="modal-title" id="myModalLabel">Введите логин и пароль</h4>
       </div>
       <div class="modal-body">
-        ...
+        
+          
+          <div class="container"   > 
+
+
+          <form class="form-signin"    >
+              <p><b>{{cU.result.info}} </b></p>
+              <label for="inputEmail" class="sr-only">электронная почта</label>
+              <input ng-model="cU.email" type="email" id="inputEmail" class="form-control"  name="email"  placeholder="электронная почта" required autofocus>
+              <label for="inputPassword" class="sr-only">пароль</label>
+              <input ng-model="cU.pass"  type="password" id="inputPassword" class="form-control" placeholder="пароль"  name="pass"   required>
+              <div class="checkbox">
+                  
+              </div>
+  
+              <button ng-click="cU.login()" class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+          </form>
+          
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-        <button type="button" class="btn btn-primary">Вход</button>
       </div>
     </div>
   </div>
+
 </div>

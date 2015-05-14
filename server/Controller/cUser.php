@@ -6,8 +6,10 @@ class cUser extends cController
     public function __construct() 
     { 
         $r = false;
+        #Errors::getMee()->set($_SERVER['PHP_AUTH_USER'].$_SERVER['PHP_AUTH_PW'] );
         if(isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW']))
         {
+            #Errors::getMee()->set($_SERVER['PHP_AUTH_USER'].$_SERVER['PHP_AUTH_PW'] );
             $this->user = new User();
             $r=$this->user->login($_SERVER['PHP_AUTH_USER'],$_SERVER['PHP_AUTH_PW']);  
         }

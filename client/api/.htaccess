@@ -3,6 +3,6 @@
 
 RewriteEngine On
 RewriteBase /api/
-RewriteRule  (.*)  http://192.168.0.15/~user7/rest/server/api/$1 [P]
-#RewriteRule  (.*)  http://192.168.56.88/rest/server/api/$1 [P]
+#RewriteRule  (.*)  http://192.168.0.15/~user7/rest/server/api/$1 [P]
+RewriteRule  (.*)  http://192.168.56.88/rest/server/api/$1 [P]
 

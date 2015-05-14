@@ -14,7 +14,7 @@ App.service('sResource', function($resource , myConfig, md5 ) {
             'get': { method:'GET' }
         });
     
-    this.getUser = $resource(myConfig.backend+'user/info/', null,
+    this.getUser_old = $resource(myConfig.backend+'user/info/', null,
         {
     
             'get': {
@@ -25,7 +25,26 @@ App.service('sResource', function($resource , myConfig, md5 ) {
             
             
         });
-
+    
+    this.getUser = function(temp, callback)
+    {   
+        
+        var t =$resource(myConfig.backend+'user/info/', null,
+        {
+            'getme': {
+                method:'GET'
+                ,headers: temp
+            }  
+        });
+        
+        return t.getme()
+        .$promise.then(callback);  
+    }
+    
+    
+  
+    
+    
     // console.log(md5.createHash('test'));
     /*
     
