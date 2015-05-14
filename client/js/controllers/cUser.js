@@ -1,18 +1,42 @@
-App.controller('cUser',function(sResource, md5){
-    this.email='';
+App.controller('cUser',function(sResource, md5, fUser){
+    
+	this.user=fUser;
+	this.email='';
     this.pass='';
+	
     console.log('user');
     
     
     var result ={info:'', };
     this.result = result;// sResource.getUser.get();
     
-    console.log(md5.createHash('test'));
     
-    console.log(this.test);
 	
 	//window.localStorage
 	
+	
+	
+		
+		
+		if(window.localStorage.taicarshop &&  !fUser.id)
+		{
+		
+			head = {"Authorization":
+            "Basic " + window.localStorage.taicarshop};
+			sResource.getUser(head,function (todo){
+              if(todo.result.id)
+              {
+				fUser.login(todo.result);
+				
+              }
+              else{
+                window.localStorage.taicarshop = false;
+              }
+        });
+			
+			//console.log('test22');
+		}  
+	//click to login
     this.login = function()
     {
         if (!this.email || !this.pass) {
@@ -23,9 +47,9 @@ App.controller('cUser',function(sResource, md5){
         
         var head = {"Authorization":
             "Basic " + hash};
-       // console.log(head);
-        
-        sResource.getUser(head,function(todo){
+	
+		
+        sResource.getUser(head,function callback(todo){
             //result.info = todo;
               if(todo.result.id)
               {
@@ -35,6 +59,9 @@ App.controller('cUser',function(sResource, md5){
                   }, 2000);
                 // $('#myModal').modal('toggle');
                 //result.info = 'Логин или пароль введен неверно';
+				console.log(todo.result.name);
+				
+				fUser.login(todo.result);
                 result.info = 'Добро пожаловать';
                 
                 //save
@@ -44,10 +71,10 @@ App.controller('cUser',function(sResource, md5){
                 result.info = 'Логин или пароль введен неверно';
               }
               
-              console.log(result);
+              //console.log(result);
             
-        });
-        //this.test =sResource.getUser2.get();
+        }	);
+        
         
     }
     

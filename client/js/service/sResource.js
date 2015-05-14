@@ -28,7 +28,6 @@ App.service('sResource', function($resource , myConfig, md5 ) {
     
     this.getUser = function(temp, callback)
     {   
-        
         var t =$resource(myConfig.backend+'user/info/', null,
         {
             'getme': {
