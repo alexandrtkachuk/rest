@@ -12,7 +12,7 @@ function start()
     try{       
         $rmethod = mb_strtolower($_SERVER['REQUEST_METHOD']);      
 
-        @ list($class,$method, $params, $extension ) = (new Route())->get(); 
+        @ list($class,$method, $params, $extension ) = (new Route())->get();  
         
         $key = array_search($extension,unserialize(EXTENSIONS));
         
@@ -35,8 +35,8 @@ function start()
         }
     }
     catch(Exception $e )
-    {
-        $err->set( $e->getMessage()  ); 
+    { 
+        $err->set( $e->getMessage()  );  
         return array(null,$extension); 
     }
     

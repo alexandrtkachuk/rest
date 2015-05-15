@@ -4,9 +4,12 @@ class Errors
 {
     protected static  $me;
     protected $errors;
+    protected $header;
+
     private function __construct()
     {
-        $errors = array();
+        $this->errors = array();
+        $this->header=false;
     }
 
     private function __clone()
@@ -30,6 +33,17 @@ class Errors
     {
         $this->errors[]=$val;
         return true;
+    }
+    
+    public function setHeader($val)
+    {
+        $this->header=$val;
+        return true;
+    }
+    
+    public function  getHeader()
+    {
+        return $this->header;
     }
 
     public function get()

@@ -10,14 +10,7 @@ App.controller('cUser',function(sResource, md5, fUser){
     var result ={info:'', };
     this.result = result;// sResource.getUser.get();
     
-    
 	
-	//window.localStorage
-	
-	
-	
-		
-		
 		if(window.localStorage.taicarshop &&  !fUser.id)
 		{
 		
@@ -36,6 +29,7 @@ App.controller('cUser',function(sResource, md5, fUser){
 			
 			//console.log('test22');
 		}  
+
 	//click to login
     this.login = function()
     {
@@ -78,4 +72,42 @@ App.controller('cUser',function(sResource, md5, fUser){
         
     }
     
+    //registration
+    this.rname ;
+    this.remail;
+    this.rpass;
+    this.rpass2;
+    this.registration = function(){
+    
+        if (!this.rname || !this.remail || !this.rpass || !this.rpass2) {
+            return ;
+        }
+        console.log(this.rname);
+        console.log(this.remail);
+        console.log(this.rpass);
+        console.log(this.rpass2);
+        if (this.rpass != this.rpass2) {
+            //code  
+            result.info = 'Пароли не соответствуют';
+            return ;
+        }
+        
+        sResource.user.add({
+            name:this.rname,
+            email:this.remail,
+            pass:md5.createHash(this.rpass)
+                       },
+            function(todo){
+                console.log(todo);
+                if (todo.result.res == true)
+                {
+                    result.info = 'Вы успешно зарегестрированы';
+                }
+                else
+                {
+                    result.info = 'Ошибка данных, или такая запись уже есть';
+                }
+            }) ;
+        
+    }      
 });

@@ -12,8 +12,12 @@ class View
                 'errors'=>Errors::getMee()->get()
             );                
         }
-
         
+        if( $h= Errors::getMee()->getHeader())
+        {
+            header('HTTP/1.1 '.$h);
+        }
+                
         header('Content-Type: text/'.$extension); 
 
         if($extension == 'json' )

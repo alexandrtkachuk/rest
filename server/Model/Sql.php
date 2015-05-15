@@ -26,14 +26,24 @@ class Sql
 
     }
 
-    protected static function query($q)
+    protected static function query($q, $params )
     {   
         /*delaem zapros i return result
          * */
 
+        
+        #throw new Exception($q);
         $t=self::$CDB->prepare($q);
-        $t->execute();
-
+        if($params)
+        {
+            #$t->bindParam(':name','sasha',PDO::PARAM_STR,5);
+            $t->execute($params );
+            
+        }
+        else
+        {
+            $t->execute();
+        }
         return $t;
     }
 
@@ -98,7 +108,7 @@ class Sql
         return $mas;
     }
     
-    public function Result()
+    public function Result($params=false)
     {                
         if(isset($this->tables)===false)
         {
@@ -125,7 +135,7 @@ class Sql
         }
         
         #echo $this->query;
-        $t=self::query($this->query );
+        $t=self::query($this->query, $params);
        
         #var_dump($t);
         
@@ -140,6 +150,11 @@ class Sql
     
     }
     
+    public function getQuery()
+    {
+        return $this->query;
+    }
+
     protected function meReset()
     {
         //reset values 
@@ -335,7 +350,10 @@ class Sql
             $t=$args[$i];
             if('string'==gettype($t))
             {
-                $t=$skobka.$t.$skobka;
+                if($t!='?')
+                {
+                    $t=$skobka.$t.$skobka;
+                }
             }
             
 

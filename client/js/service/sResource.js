@@ -26,6 +26,18 @@ App.service('sResource', function($resource , myConfig, md5 ) {
             
         });
     
+    
+    this.user =  $resource(myConfig.backend+'user/add/:name/:pass/:email',
+        {
+            email:'@email',
+            name:'@name',
+            pass:'@pass'
+        },
+        {
+            'add': { method:'POST' }
+        });
+    
+    
     this.getUser = function(temp, callback)
     {   
         var t =$resource(myConfig.backend+'user/info/', null,

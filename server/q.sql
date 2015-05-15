@@ -51,6 +51,10 @@ CREATE TABLE carshop_manufacturer (id INT NOT NULL AUTO_INCREMENT , name VARCHAR
 
 INSERT INTO carshop_users (name , pass , email , role ) VALUES ( 'admin', MD5('admin'), 'admin@mail.ru',0);
 INSERT INTO carshop_users (name , pass , email , role ) VALUES ( 'test', MD5('test'), 'test@mail.ru',1);
+
+INSERT INTO carshop_payment (name) VALUES ( 'credit card');
+INSERT INTO carshop_payment (name) VALUES ( 'real money');
+
 INSERT INTO carshop_manufacturer (name  ) VALUES ( 'BMW');
 INSERT INTO carshop_manufacturer (name  ) VALUES ( 'Mersedes');
 INSERT INTO carshop_manufacturer (name  ) VALUES ( 'Opel');

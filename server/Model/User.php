@@ -21,7 +21,7 @@ class User
             'email',
             'role'        
         )->setTables(TABLE_USERS)->
-        where('email="'.$email.'" AND pass ="'.$pass.'"')->Result();
+        where('email= ?  AND pass = ? ')->Result(array($email,$pass));
 
         if(count($result)>0)
         {
@@ -36,7 +36,27 @@ class User
 
     public function registration($email,$pass,$name)
     {
-    
+
+        $sql=Sql::getMee();
+
+        $result = $sql->Select('id')->setTables(TABLE_USERS)->
+            where('email= ?  ')->Result(array($email));
+
+        if(count($result)>0)
+        {
+            return false;
+        }
+
+        $result = $sql->Insert(
+            'name','?',
+            'email','?',
+            'pass','?',
+            'role',1
+            ) -> setTables(TABLE_USERS) -> Result(
+                array($name,$email,$pass)
+            );
+        
+        return $result;
     }
     
     public function info()

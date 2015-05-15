@@ -14,3 +14,12 @@ App.directive('loginForm', function() {
       templateUrl: "partials/login.html"
   };
 });
+
+App.directive('regForm', function() {
+  return {
+      restrict: 'AE',
+      replace: 'true',
+      controller: "cUser as cU",
+      templateUrl: "partials/registration.html"
+  };
+});
