@@ -16,19 +16,16 @@ CREATE TABLE carshop_users (id INT NOT NULL AUTO_INCREMENT ,
     pass VARCHAR(128),
     email VARCHAR(64),
     role INT,
+    token VARCHAR(128),
     PRIMARY KEY (id) );
 
-DROP TABLE IF EXISTS carshop_car2user;
-CREATE TABLE carshop_car2user (idCar INT , idUser INT , count INT);
 
-DROP TABLE IF EXISTS carshop_order2car;
-CREATE TABLE carshop_order2car (idOrder INT , idCar INT , count INT , price FLOAT);
 
 DROP TABLE IF EXISTS carshop_orders ;
 CREATE TABLE carshop_orders (id INT NOT NULL AUTO_INCREMENT ,
     idUser INT ,
-    idPayment INT ,
-    orderDate DATETIME,  
+    idPayment INT,
+    idCar   INT, 
     PRIMARY KEY (id) );
 
 
@@ -40,8 +37,7 @@ DROP TABLE IF EXISTS carshop_category;
 CREATE TABLE carshop_category (id INT NOT NULL AUTO_INCREMENT , name VARCHAR(32) ,  
     PRIMARY KEY (id) );
 
-DROP TABLE IF EXISTS carshop_order2status;
-CREATE TABLE carshop_order2status (idOrder INT , status INT);
+
 
 DROP TABLE IF EXISTS carshop_manufacturer;
 CREATE TABLE carshop_manufacturer (id INT NOT NULL AUTO_INCREMENT , name VARCHAR(32) ,  

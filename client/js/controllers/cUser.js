@@ -11,16 +11,16 @@ App.controller('cUser',function(sResource, md5, fUser){
     this.result = result;// sResource.getUser.get();
     
 	
-		if(window.localStorage.taicarshop &&  !fUser.id)
+		if(window.localStorage.taicarshop &&  !fUser.id )
 		{
 		
-			head = {"Authorization":
-            "Basic " + window.localStorage.taicarshop};
+			head = {"token":
+            window.localStorage.taicarshop};
 			sResource.getUser(head,function (todo){
+                console.log(todo);
               if(todo.result.id)
               {
 				fUser.login(todo.result);
-				
               }
               else{
                 window.localStorage.taicarshop = false;
@@ -39,12 +39,15 @@ App.controller('cUser',function(sResource, md5, fUser){
         
         var hash = btoa(this.email+":"+md5.createHash(this.pass));
         
-        var head = {"Authorization":
-            "Basic " + hash};
+        var head = {
+            "Authorization":"Basic " + hash,
+        };
 	
 		
-        sResource.getUser(head,function callback(todo){
+        sResource.loginUser(head,function callback(todo){
             //result.info = todo;
+            console.log(todo);
+           
               if(todo.result.id)
               {
                 console.log('good');
@@ -59,7 +62,7 @@ App.controller('cUser',function(sResource, md5, fUser){
                 result.info = 'Добро пожаловать';
                 
                 //save
-                window.localStorage.taicarshop= hash;
+                window.localStorage.taicarshop=todo.result.token;
               }
               else{
                 result.info = 'Логин или пароль введен неверно';
@@ -109,5 +112,17 @@ App.controller('cUser',function(sResource, md5, fUser){
                 }
             }) ;
         
-    }      
+    }
+    
+    //logout
+    
+    this.logout = function()
+    {
+        head = {"token":
+            window.localStorage.taicarshop};
+			sResource.logoutUser(head,function (todo){
+              //console.log(todo);
+              fUser.logout();
+        });
+    }
 });

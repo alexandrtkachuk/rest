@@ -6,7 +6,8 @@ App.factory('fUser', function() {
 		role:false,
 		ButtonEnter:'block',
 		ButtonLogout:'none',
-		ButtonReg:'block'
+		ButtonReg:'block',
+		ButtonDel:'none'
 		};
 	
 	user.login = function(result)
@@ -17,6 +18,9 @@ App.factory('fUser', function() {
 		user.ButtonLogout='block';
 		user.ButtonEnter = 'none';
 		user.ButtonReg='none';
+		if (user.role == 0) {
+			user.ButtonDel = 'block';
+		}
 	}
 	
 	user.logout = function ()
@@ -28,6 +32,7 @@ App.factory('fUser', function() {
 		user.ButtonLogout='none';
 		user.ButtonEnter='block';
 		user.ButtonReg='block';
+		user.ButtonDel = 'none';
 	}
 	
 	return user;

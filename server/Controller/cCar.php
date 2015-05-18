@@ -1,6 +1,6 @@
 <?php
 
-class cCar extends cController
+class cCar extends cUser
 {  
     function  getInfo($params)
     {
@@ -17,9 +17,29 @@ class cCar extends cController
         return $result;
 
     }
-    
+
+    function deleteCar($params)
+    {
+        $this->isLogin();
+
+        if(!is_numeric($params))
+        {
+            return false;
+        }
+
+        $r= $this->user->info();
+
+        if($r['role']>0)
+        {
+            return false;
+        } 
+
+        return (new Car)->delete($params);
+    }
+
     function getSearch($params)
     {
+        #print $params;
         #@ list($year, $volume, $color, $maxspeed, $price) = explode('/', $params );
         @ $arr = explode('/', $params );
 
@@ -34,7 +54,12 @@ class cCar extends cController
                     break;
                 }
                 $k = $arr[$i];
-                $items[$k]= $arr[$i+1];
+                $a = $arr[$i+1];
+                if($a=='null')
+                {
+                    $a='';
+                }
+                $items[$k]= $a;
             }
             #*/
             $year = $items['year'];
@@ -42,7 +67,7 @@ class cCar extends cController
             $volume = $items['volume'];
             $maxspeed = $items['maxspeed'];
             $price = $items['price'];
-            
+            #Errors::getMee()->set($items);
             
             if( !$year || !is_numeric($year) || $year <0 )
             {
@@ -50,19 +75,19 @@ class cCar extends cController
                 return false;
             }
 
-            if($volume &&  !is_numeric($volume))
+            if(strlen($volume)>0 &&  $volume &&  !is_numeric($volume))
             {
                 Errors::getMee()->set(ERROR_7);
             return false;
         }
 
-        if($maxspeed &&  !is_numeric($maxspeed))
+        if(strlen($maxspeed)>0 &&   $maxspeed &&  !is_numeric($maxspeed))
         {
-            Errors::getMee()->set(ERROR_7);
+            Errors::getMee()->set(ERROR_7.'max speed'.$maxspeed );
             return false;
         }
 
-        if($price &&  !is_numeric($price))
+        if(strlen($price)>0 &&  $price &&  !is_numeric($price))
         {
             Errors::getMee()->set(ERROR_7);
             return false;

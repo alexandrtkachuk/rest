@@ -14,7 +14,8 @@ class User
 
     public function login($email,$pass)
     {
-        $sql=Sql::getMee(); 
+        $sql=Sql::getMee();
+
         $result = $sql->Select(
             'id',            
             'name',     
@@ -29,7 +30,13 @@ class User
             $this->name = $result[0]->name;
             $this->email = $result[0]->email;
             $this->role = $result[0]->role;
-            return true;
+            
+            $token = $this->getToken();
+            $sql->Update( 'token','"?"' )
+                ->setTables(TABLE_USERS)
+                ->where('id = ?') 
+                ->Result( array($token, $this->id));
+            return $token;
         }
         return false;        
     }
@@ -58,7 +65,7 @@ class User
         
         return $result;
     }
-    
+
     public function info()
     {    
         return array(
@@ -66,5 +73,50 @@ class User
             'name'=>$this->name,
             'email'=>$this->email,
             'role'=>$this->role);
-    } 
+    }
+
+    public function isLogin ($token)
+    {
+
+        $sql=Sql::getmee(); 
+        $result = $sql->Select(
+            'id',            
+            'name',     
+            'email',
+            'role'        
+        )->setTables(TABLE_USERS)->
+        where('token = ? ')->Result(array($token));
+
+        if(count($result)>0)
+        {
+            $this->id = $result[0]->id;
+            $this->name = $result[0]->name;
+            $this->email = $result[0]->email;
+            $this->role = $result[0]->role;
+
+            return true;
+        }
+        return false;        
+
+    }
+
+    public function logout($token)
+    {
+    
+        $sql=Sql::getmee();
+ 
+        $r=$sql->Update('token' , '')
+            ->setTables(TABLE_USERS)
+            ->where(' token = ? ')
+        ->Result( array($token));
+
+        return true;
+    }
+
+    protected function  getToken()
+    {
+        $q = uniqid();
+        return md5($q.SKEY);
+    }
+
 }

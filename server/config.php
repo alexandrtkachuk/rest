@@ -11,13 +11,14 @@ define('EXTENSIONS',serialize(
 define('TABLE_USERS', 'carshop_users');
 define('TABLE_GOODS', 'carshop_cars'); #товары
 define ('TABLE_CATEGORY','');
-define ('TABLE_ORDERS','');
+define ('TABLE_ORDERS','carshop_orders');
 define ('TABLE_CART','');
 define ('TABLE_PAYMENTS','carshop_payment');
 define('DB_NAME', 'user7');
 define('USER', 'user7');
 define('PASS', 'tuser7');
 define('DB_HOST', '');
+define('SKEY', 'testme');
 
 ##########ERRORS#####################
 

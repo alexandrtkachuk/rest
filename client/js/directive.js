@@ -23,3 +23,13 @@ App.directive('regForm', function() {
       templateUrl: "partials/registration.html"
   };
 });
+
+App.directive('payForm', function() {
+  return {
+      restrict: 'AE',
+      replace: 'true',
+      controller: "cOrder as cO",
+      templateUrl: "partials/payment.html"
+  };
+});
+

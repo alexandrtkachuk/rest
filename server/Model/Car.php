@@ -19,6 +19,14 @@ class Car
         $result = $sql->Result(array($id) );
         return $result;
     }
+    
+    public function delete($id)
+    {
+        $sql=Sql::getMee();
+        return $sql->Delete()->setTables(TABLE_GOODS)
+            ->where('id = ?')->Result(array($id));
+    
+    }
 
     public function getAll()
     {

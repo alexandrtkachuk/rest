@@ -20,6 +20,12 @@ App.config(function($stateProvider, $urlRouterProvider) {
 		  template: "{{cU.test}}"
 		  
 		})
+		
+		.state('search', {
+		  url: "/search",
+		  controller: "cSearch as cS",
+		  templateUrl: "partials/search.html"
 		  
+		}) 
 
   });

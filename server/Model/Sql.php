@@ -25,6 +25,18 @@ class Sql
     {
 
     }
+    
+    public function goQuery($q,$params, $r = true)
+    {
+        $t=self::query($q, $params);
+       
+        if($this->retResult===true)
+        {
+            $r=$this->getResult($t);
+        }
+        $this->meReset(); 
+        return $r;
+    }
 
     protected static function query($q, $params )
     {   
@@ -84,9 +96,9 @@ class Sql
         if(isset(self::$me) ===false )
         {
             self::$me = new self();
-            return self::$me;
+            #return self::$me;
         }
-
+            return self::$me;
         return false;
     }
 
@@ -279,7 +291,7 @@ class Sql
     }
 
 
-    public function DeleteTab($tabName)
+    public function Delete($tabName)
     {
 
         $this->setTables($tabName)->query='DELETE FROM  %tableName%';
