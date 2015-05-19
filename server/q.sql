@@ -67,7 +67,7 @@ INSERT INTO carshop_cars (price ,title , color , maxSpeed, year, engineSize, ima
 VALUES ( 1500, 'Omega', 'black', 220,2010,2.0, 'test.jpg',3);
 
 INSERT INTO carshop_cars (price ,title , color , maxSpeed, year, engineSize, image, idManufacturer ) 
-VALUES ( 1200, 'Astra', 'black', 200,2009,1.8, 'test.jpg',3);
+VALUES ( 1200, 'Astra', 'black', 200,2009,1.5, 'test.jpg',3);
 
 INSERT INTO carshop_cars (price ,title , color , maxSpeed, year, engineSize, image, idManufacturer ) 
 VALUES ( 1700, '3m', 'black', 220,2011,2.0, 'test.jpg',1);

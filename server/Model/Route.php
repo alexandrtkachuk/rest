@@ -20,9 +20,17 @@ class Route
         @ list( $api,$this->class,$this->method,$param) = explode('/',$url,4);
         #@ list($this->params,$this->extension) =  explode('.', $param , 2);
 
-        @ list($this->params,$t,$this->extension)= 
-            preg_split('/(\/[\w]*)\.([^\d+]\w+)/',$param,2,PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE );
+        @ list($this->params,$this->extension)= 
+             preg_split('/^(\w+)\.([^\d+]\w+)|[\/](\w+)\.([^\d+]\w+)|[\/]\.([^\d+]\w+)/',$param,2,PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE );
+
+        #print_r($this->params);
+
+        #print '<br>'.$t.'<br/>';
+
+        #print $this->extension;
+        #print "end";
         
+        #die();
         if(isset($t ))
         {
             $this->params.=$t;
